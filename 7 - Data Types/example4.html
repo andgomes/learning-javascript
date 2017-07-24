@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<p id="demo"></p>
+		
+		<script>
+			var myVar;
+			var myNull = null;
+			document.getElementById("demo").innerHTML =
+					myVar + "<br />" +
+					myNull + "<br />" +
+					(null == undefined) + "<br />" +
+					(null === undefined);
+		</script>
+	</body>
+</html>
