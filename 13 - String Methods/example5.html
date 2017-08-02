@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<h1>JavaScript String Methods</h1>
+		
+		<p>
+			The search() method returns the position of the first occurrence of
+			a specified text in a string:
+		</p>
+		
+		<p id="demo1"></p>
+		
+		<p>
+			The slice() method extract a part of a string and returns the
+			extracted parts in a new string:
+		</p>
+		
+		<p id="demo2"></p>
+		
+		<p id="demo3"></p>
+		
+		<p id="demo4"></p>
+		
+		<p id="demo5"></p>
+		
+		<p>
+			The substring() method extract a part of a string and returns the
+			extracted parts in a new string:
+		</p>
+		
+		<p id="demo6"></p>
+		
+		<p>
+			The substr() method extract a part of a string and returns the
+			extracted parts in a new string:
+		</p>
+		
+		<p id="demo7"></p>
+		
+		<script>
+			var str = "Please locate where 'locate' occurs!";
+			var pos = str.search("locate");
+			
+			document.getElementById("demo1").innerHTML = pos;
+			
+			str = "Apple, Banana, Kiwi";
+			var res = str.slice(7, 13);
+			
+			document.getElementById("demo2").innerHTML = res;
+			
+			res = str.slice(-12, -6);
+			
+			document.getElementById("demo3").innerHTML = res;
+			
+			res = str.slice(7);
+			
+			document.getElementById("demo4").innerHTML = res;
+			
+			res = str.slice(-12);
+			
+			document.getElementById("demo5").innerHTML = res;
+			
+			res = str.substring(7, 13);
+			
+			document.getElementById("demo6").innerHTML = res;
+			
+			res = str.substr(7, 6);
+			
+			document.getElementById("demo7").innerHTML = res;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<p>
+			The charAt() method returns the character at a given position in a
+			string:
+		</p>
+		
+		<p id="demo1"></p>
+		
+		<p>
+			The charCodeAt() method returns the unicode of the character at a
+			given position in a string:
+		</p>
+		
+		<p id="demo2"></p>
+		
+		<p>
+			Click "Try it" to display the first array element, after a string
+			split.
+		</p>
+		
+		<button onclick="myFunction()">Try it</button>
+		
+		<p id="demo3"></p>
+		
+		<p id="demo4"></p>
+		
+		<script>
+			var str = "Hello World";
+			
+			document.getElementById("demo1").innerHTML = str.charAt(0);
+			document.getElementById("demo2").innerHTML =
+					str.charCodeAt(str.length -1);
+			
+			function myFunction() {
+			
+				var str = "a,b,c,d,e,f";
+				var array = str.split(",");
+				
+				document.getElementById("demo3").innerHTML = array[0];
+			
+			}
+			
+			str = "SPAM";
+			var array = str.split("");
+			var txt = "";
+			
+			var i;
+			for (i = 0; i < array.length; i++) {
+				txt += array[i] + "<br />";	
+			}
+			
+			document.getElementById("demo4").innerHTML = txt;
+		</script>
+	</body>
+</html>

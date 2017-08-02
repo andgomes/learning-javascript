@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<p>Convert string to upper case:</p>
+		
+		<button onclick="myFunction1()">Try it</button>
+		
+		<p id="demo1">Hello World!</p>
+		
+		<p>Convert string to lower case:</p>
+		
+		<button onclick="myFunction2()">Try it</button>
+		
+		<p id="demo2">Hello World!</p>
+		
+		<p>
+			The concat() method joins two or more strings:
+		</p>
+		
+		<p id="text1">Hello</p>
+		
+		<p id="text2">World!</p>
+		
+		<button onclick="myFunction3()">Try it</button>
+		
+		<p id="demo3"></p>
+		
+		<script>
+			function myFunction1() {
+			
+				var str = document.getElementById("demo1").innerHTML;
+				document.getElementById("demo1").innerHTML = str.toUpperCase();
+			
+			}
+			
+			function myFunction2() {
+			
+				var str = document.getElementById("demo2").innerHTML;
+				document.getElementById("demo2").innerHTML = str.toLowerCase();
+			
+			}
+			
+			function myFunction3() {
+			
+				var str1 = document.getElementById("text1").innerHTML;
+				var str2 = document.getElementById("text2").innerHTML;
+				
+				document.getElementById("demo3").innerHTML = str1.concat(" ",
+						str2);
+			
+			}
+		</script>
+	</body>
+</html>

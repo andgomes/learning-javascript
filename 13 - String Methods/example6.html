@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<h1>JavaScript String Methods</h1>
+		
+		<p>
+			Replace "Microsoft" with "Free Software Foundation" in the paragraph
+			below:
+		</p>
+		
+		<button onclick="myFunction1()">Try it</button>
+		
+		<p id="demo1">Please visit Microsoft!</p>
+		
+		<p>
+			Replace "Microsoft" with "Free Software Foundation" in the paragraph
+			below:
+		</p>
+		
+		<button onclick="myFunction2()">Try it</button>
+		
+		<p id="demo2">Please visit Microsoft and Microsoft!</p>
+		
+		<p>
+			Replace all occurrences of "Microsoft" with "Free Software
+			Foundation" in the paragraph below:
+		</p>
+		
+		<button onclick="myFunction3()">Try it</button>
+		
+		<p id="demo3">Please visit Microsoft and Microsoft!</p>
+		
+		<p>
+			Replace "Microsoft" with "Free Software Foundation" in the paragraph
+			below:
+		</p>
+		
+		<button onclick="myFunction4()">Try it</button>
+		
+		<p id="demo4">Please visit Microsoft!</p>
+		
+		<p>
+			The example does not work because MICROSOFT is written with upper
+			case letters.
+		</p>
+		
+		<p>
+			Replace "Microsoft" with "Free Software Foundation" in the paragraph below:
+		</p>
+		
+		<button onclick="myFunction5()">Try it</button>
+		
+		<p id="demo5">Please visit Microsoft!<p>
+		
+		<script>
+			function myFunction1() {
+			
+				var str = document.getElementById("demo1").innerHTML;
+				var txt = str.replace("Microsoft", "Free Software Foundation");
+				document.getElementById("demo1").innerHTML = txt;
+				
+			}
+			
+			function myFunction2() {
+			
+				var str = document.getElementById("demo2").innerHTML;
+				var txt = str.replace("Microsoft", "Free Software Foundation");
+				
+				document.getElementById("demo2").innerHTML = txt;
+			
+			}
+			
+			function myFunction3() {
+			
+				var str = document.getElementById("demo3").innerHTML;
+				var txt = str.replace(/Microsoft/g, "Free Software Foundation");
+				
+				document.getElementById("demo3").innerHTML = txt;
+				
+			}
+			
+			function myFunction4() {
+			
+				var str = document.getElementById("demo4").innerHTML;
+				var txt = str.replace("MICROSOFT", "Free Software Foundation");
+				
+				document.getElementById("demo4").innerHTML = txt;
+			
+			}
+			
+			function myFunction5() {
+			
+				var str = document.getElementById("demo5").innerHTML;
+				var txt = str.replace(/MICROSOFT/i, "Free Software Foundation");
+				
+				document.getElementById("demo5").innerHTML = txt;
+			
+			}
+		</script>
+	</body>
+</html>
