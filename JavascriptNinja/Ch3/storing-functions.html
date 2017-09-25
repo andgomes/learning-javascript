@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		
+		<script>
+			var store = {
+				nextId: 1,
+				cache: {},
+				add: function(fn) {
+					if (!fn.id) {
+						fn.id = this.nextId++;
+						this.cache[fn.id] = fn;
+						return true;
+					}	
+				}
+			};
+			
+			function ninja() {}
+			
+			assert(store.add(ninja),
+					"Function was safely added.");
+			assert(!store.add(ninja),
+					"But it was only added once.");
+		</script>
+	</body>
+</html>
