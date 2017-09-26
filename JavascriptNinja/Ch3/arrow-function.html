@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Function Declarations</title>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		
+		<script>
+			var greet = name => "Greetings " + name;
+			
+			assert(greet("Oishi") === "Greetings Oishi",
+					"Oishi is properly greeted");
+			
+			var anotherGreet = function(name) {
+				return "Greetings " + name;
+			};
+			
+			assert(anotherGreet("Oishi") === "Greetings Oishi",
+					"Again, Oishi is properly greeted");
+		</script>
+	</body>
+</html>
