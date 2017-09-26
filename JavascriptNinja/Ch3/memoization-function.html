@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Memoization Function</title>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		
+		<script>
+			function isPrime(value) {
+			
+				if (!isPrime.answers) {
+					isPrime.answers = {};
+				}
+				
+				if (isPrime.answers[value] !== undefined) {
+					return isPrime.answers[value];
+				}
+				
+				var prime = value !== 1;
+				
+				for (var i = 2; i < value; i++) {
+				
+					if (value % i === 0) {
+						prime = false;
+						break;
+					}
+				
+				}
+				
+				return isPrime.answers[value] = prime;
+				
+			}
+			
+			assert(isPrime(5), "5 is prime!");
+			assert(!isPrime(12), "12 is not prime!");
+			
+			assert(isPrime.answers[5], "The answer was cached!");
+			assert(!isPrime.answers[12],
+					"The other answer was cached too");
+		</script>
+	</body>
+</html>
