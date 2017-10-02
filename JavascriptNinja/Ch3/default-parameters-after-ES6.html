@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="reports"></ul>
+		<ul id="results"></ul>
+		<script>
+			function performAction(ninja, action = "skulking") {
+				return ninja + " " + action;
+			}
+			
+			assert(performAction("Kotaro") === "Kotaro skulking",
+					"The default value is used for Kotaro");
+			
+			assert(performAction("Yoshi") === "Yoshi skulking",
+					"The default value is used for Yoshi");
+			
+			assert(performAction("Hattori", "sneaking") === "Hattori sneaking",
+					"Hattori can do whatever he pleases, even sneaking!");
+		</script>
+	</body>
+</html>
