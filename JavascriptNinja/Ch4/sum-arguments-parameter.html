@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="reports"></ul>
+		<ul id="results"></ul>
+		<script>
+			function sum() {
+			
+				var total = 0;
+				
+				for (var i = 0; i < arguments.length; i++) {
+					total += arguments[i];
+				}
+				
+				return total
+			
+			}
+			
+			assert(sum(1, 2, 3) === 6, "We can add three numbers");
+			assert(sum(1, 2, 3, 4) === 10, "We can add four numbers");
+			assert(sum(1, 2, 3, 4, 5) === 15, "We can add five numbers");
+		</script>
+	</body>
+</html>
