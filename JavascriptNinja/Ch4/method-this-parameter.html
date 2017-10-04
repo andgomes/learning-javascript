@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function whatsMyContext() {
+				return this;
+			}
+			
+			assert(whatsMyContext() === window,
+					"Funcion call on window");
+			
+			var getMyThis = whatsMyContext;
+			
+			assert(getMyThis() === window,
+					"Another function call in window");
+			
+			var ninja1 = {
+				getMyThis: whatsMyContext
+			};
+			
+			assert(ninja1.getMyThis() === ninja1,
+					"Working with 1st ninja");
+			
+			var ninja2 = {
+				getMyThis: whatsMyContext
+			};
+			
+			assert(ninja2.getMyThis() === ninja2,
+					"Working with 2nd ninja");
+		</script>
+	</body>
+</html>
