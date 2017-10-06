@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css">
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function juggle() {
+			
+				var result = 0;
+				
+				for (var i = 0; i < arguments.length; i++) {
+					result += arguments[i];
+				}
+				
+				this.result = result;
+			
+			}
+			
+			var ninja1 = {};
+			var ninja2 = {};
+			
+			juggle.apply(ninja1, [1, 2, 3, 4]);
+			juggle.call(ninja2, 5, 6, 7, 8);
+			
+			assert(ninja1.result === 10,
+					"juggled via apply");
+			assert(ninja2.result === 26,
+					"juggled via call");
+		</script>
+	</body>
+</html>
