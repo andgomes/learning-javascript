@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<button id="test">Click me!</button>
+		<script>
+			assert(this === window, "this === window");
+			
+			var button = {
+				clicked: false,
+				click: () => {
+					this.clicked = true;
+					
+					if (this === button) {
+					
+						assert(button.clicked,
+								"button object was clicked");
+					
+					} else {
+					
+						assert(!button.clicked,
+								"button object wasn't clicked");
+						assert(window.clicked,
+								"window object was clicked");
+					
+					}
+					
+				}
+			};
+			
+			var elem = document.getElementById("test");
+			
+			var boundFunction = button.click.bind(button);
+			
+			elem.addEventListener("click", button.click);
+			elem.addEventListener("click", boundFunction);
+			
+			assert(boundFunction != button.click,
+					"The bounded function is differente of button.click");
+		</script>
+	</body>
+</html>
