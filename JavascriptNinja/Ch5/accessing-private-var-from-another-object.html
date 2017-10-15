@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function Ninja() {
+			
+				var feints = 0;
+				
+				this.getFeints = function() {
+					return feints;
+				};
+				
+				this.feint = function() {
+					feints++;
+				};
+			
+			}
+			
+			var ninja = new Ninja();
+			
+			assert(ninja.getFeints() === 0,
+					"ninja's feints is initially zero");
+			
+			ninja.feint();
+			
+			assert(ninja.getFeints() === 1,
+					"ninja's feinted");
+			
+			var impostor = {getFeints: ninja.getFeints};
+			
+			assert(impostor.getFeints() === 1,
+					"impostor has access to getFeints method");
+		</script>
+	</body>
+</html>
