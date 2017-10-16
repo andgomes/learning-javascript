@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function* WeaponGenerator() {
+			
+				yield "Katana";
+				yield "Wazikashi";
+				yield "Kusarigama";
+			
+			}
+			
+			for (let weapon of WeaponGenerator()) {
+				assert(weapon !== undefined, weapon);
+			}
+			
+			var weaponsIterator = WeaponGenerator();
+			
+			var result1 = weaponsIterator.next();
+			
+			assert(typeof result1 === "object" &&
+					result1.value === "Katana" &&
+					!result1.done, "Katana received!");
+			
+			var result2 = weaponsIterator.next();
+			
+			assert(typeof result2 === "object" &&
+					result2.value === "Wazikashi" &&
+					!result2.done, "Wazikashi received!");
+			
+			var result3 = weaponsIterator.next();
+			
+			assert(typeof result3 === "object" &&
+					result3.value === "Kusarigama" &&
+					!result3.done, "Kusarigama received!");
+			
+			var result4 = weaponsIterator.next();
+			
+			assert(typeof result4 === "object" &&
+					result4.value === undefined &&
+					result4.done, "There are no more results!");
+		</script>
+	</body>
+</html>
