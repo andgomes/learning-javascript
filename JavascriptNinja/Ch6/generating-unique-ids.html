@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<ul id="results"></ul>
+	<script>
+		function* IdGenerator() {
+		
+			let id = 0;
+			
+			while (true) {
+				yield ++id;
+			}
+		
+		}
+		
+		var idIterator = IdGenerator();
+		
+		function Ninja() {
+			
+			this.id = idIterator.next().value;
+			
+		}
+		
+		var ninja1 = new Ninja();
+		var ninja2 = new Ninja();
+		var ninja3 = new Ninja();
+		
+		assert(ninja1.id === 1, "First ninja has id 1");
+		assert(ninja2.id === 2, "Second ninja has id 2");
+		assert(ninja3.id === 3, "Third ninja has id 3");
+	</script>
+</html>

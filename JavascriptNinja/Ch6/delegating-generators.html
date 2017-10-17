@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<ul id="results"></ul>
+	<script>
+		function* WarriorGenerator() {
+		
+			yield "Date Masamune";
+			yield* NinjaGenerator();
+			yield "Oda Nobunaga";
+		
+		}
+		
+		function* NinjaGenerator() {
+		
+			yield "Sarutobi Sasuke";
+			yield "Fuma Kotaro";
+		
+		}
+		
+		for (let warrior of WarriorGenerator()) {
+			assert(warrior !== undefined, warrior);
+		}
+	</script>
+</html>
