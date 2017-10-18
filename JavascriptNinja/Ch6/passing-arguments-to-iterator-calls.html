@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<script>
+			function* NinjaGenerator(action) {
+			
+				const imposter = yield ("Hattori " + action);
+				
+				assert(imposter === "Kotaro",
+						"The generator has been infiltrated");
+				
+				yield ("Yoshi (" + imposter + ") " + action);
+			
+			}
+			
+			const ninjaIterator = NinjaGenerator("skulk");
+			
+			const result1 = ninjaIterator.next();
+			
+			assert(result1.value === "Hattori skulk",
+					"Hattori is skulking");
+			
+			const result2 = ninjaIterator.next("Kotaro");
+			
+			assert(result2.value === "Yoshi (Kotaro) skulk",
+					"We have an imposter!");
+		</script>
+	</body>
+</html>

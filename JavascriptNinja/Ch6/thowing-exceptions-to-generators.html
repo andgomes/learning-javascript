@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<script>
+			function* NinjaGenerator() {
+			
+				try {
+				
+					yield "Kotaro";
+					fail("The expected exception didn't occur");
+				
+				} catch (e) {
+				
+					assert(e === "Catch this!",
+							"Aha! We caught an exception");
+				
+				}
+			
+			}
+			
+			const ninjaIterator = NinjaGenerator();
+			
+			const result = ninjaIterator.next();
+			
+			assert(result.value === "Kotaro",
+					"We got Kotaro");
+			
+			ninjaIterator.throw("Catch this!");
+		</script>
+	</body>
+</html>
