@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<script>
+			const ninjaPromise = new Promise((resolve, response) => {
+				resolve("Kotaro");
+			});
+			
+			ninjaPromise.then(ninja => {
+				assert(ninja === "Kotaro", "We were promised Kotaro!");	
+			}, err => {
+				fail("There shouldn't be an error");
+			});
+		</script>
+	</body>
+</html>
