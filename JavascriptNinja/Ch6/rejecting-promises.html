@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<script>
+			const promise = new Promise((resolve, reject) => {
+				reject("Explicitly reject a promise!");
+			})
+			
+			promise.then(() => fail("Happy path, won't be called!"),
+					error => pass("A promise was explicitly rejected!"));
+			
+			promise.then(() => fail("Happy path won't be called")).catch(
+					() => pass("Promise was also rejected"));
+			
+			const otherPromise = new Promise((resolve, reject) => {
+				undefinedVariable++;
+			});
+			
+			otherPromise.then(() => fail("Happy path, won't be called!"),
+				() => pass("Promise was rejected because of an exception"));
+			
+			const anotherPromise = new Promise((resolve, reject) => {
+				resolve();
+			});
+			
+			anotherPromise
+			.then(() => pass("Pass first then"))
+			.then(() => undefinedVariable++)
+			.catch(() => pass("Fail second then"));
+		</script>
+	</body>
+</html>
