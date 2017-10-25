@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reporst"></ul>
+		<script>
+			function makeAPromise(value) {
+				
+				if (value) {
+					return new Promise((resolve, reject) => {
+						resolve("Ok");
+					});
+				} else {
+					return new Promise((resolve, reject) => {
+						reject("Error");
+					});
+				}
+				
+			}
+			
+			const allPromises = Promise.all([makeAPromise(true),
+					makeAPromise(true), makeAPromise(true)]);
+			
+			allPromises.then(results => {
+				pass("All promises resolved successfully");
+				
+				assert(results[0] === "Ok" && results[1] === "Ok",
+						"And returned Ok signals");
+			});
+			
+			const otherPromises = Promise.all([makeAPromise(false),
+					makeAPromise(true)]);
+			
+			otherPromises.then(results => fail("Won't be called")).
+					catch(error => assert(error === "Error",
+					"One promise rejected"));
+		</script>
+	</body>
+</html>
