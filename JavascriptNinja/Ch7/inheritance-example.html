@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function Person() {}
+			Person.prototype.dance = function() {};
+			
+			function Ninja() {}
+			Ninja.prototype = new Person();
+			
+			const ninja = new Ninja();
+			
+			assert(ninja instanceof Ninja,
+					"ninja receives functionality from the Ninja prototype");
+			
+			assert(ninja instanceof Person,
+					"... and the Person prototype");
+			
+			assert(ninja instanceof Object,
+					"... and the Object prototype");
+			
+			assert(typeof ninja.dance === "function",
+					"... and can dance!");
+			
+			assert(ninja.constructor !== Ninja,
+					"Ninja constructor was lost");
+			
+			Object.defineProperty(Ninja.prototype, "constructor", {
+				enumerable: false,
+				value: Ninja,
+				writable: true
+			})
+			
+			assert(ninja.constructor === Ninja,
+					"ninja connection with Ninja restablished");
+		</script>
+	</body>
+</html>
