@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			class Person {
+				
+				constructor(name) {
+					this.name = name;
+				}
+				
+				dance() {
+					return true;
+				}
+			
+			}
+			
+			class Ninja extends Person {
+			
+				constructor(name, level) {
+					super(name);
+					this.level = level;
+				}
+				
+				swingSword() {
+					return true;
+				}
+				
+				static compare(ninja1, ninja2) {
+					return ninja1.level - ninja2.level;
+				}
+				
+			}
+			
+			var ninja1 = new Ninja("Kotaro", 5);
+			
+			assert(ninja1 instanceof Ninja, "Our ninja is a Ninja");
+			assert(ninja1.name === "Kotaro", "named Kotaro");
+			assert(ninja1.swingSword(), "and he can swing a sword");
+			
+			var ninja2 = new Ninja("Sasuke", 4);
+			
+			assert(!("compare" in ninja1) && !("compare" in ninja2),
+					"A ninja instance doesn't know how to compare");
+			
+			assert(Ninja.compare(ninja1, ninja2) > 0,
+					"The Ninja class can do the comparison!");
+			
+			assert(!("swingSword" in Ninja),
+					"The Ninja class cannot swing a sword");
+			
+			var person = new Person("Anderson");
+			
+			assert(person instanceof Person, "A person's a Person");
+			assert(person.dance(), "A person can dance");
+			assert(person.name === "Anderson", "We can call it by name");
+			assert(!(person instanceof Ninja), "But it's not a Ninja");
+			assert(!("swingSword" in person), "And it cannot swing a sword");
+			
+			assert(ninja1 instanceof Ninja, "A ninja's a Ninja");
+			assert(ninja1.swingSword(), "That can swing a sword");
+			assert(ninja1.dance(), "And enjoys dance");
+			assert(ninja1 instanceof Person, "It's also a Person");
+			assert(ninja1.name === "Kotaro", "That has a name");
+		</script>
+	</body>
+</html>
