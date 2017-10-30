@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			const ninja = {
+			
+				name: "Sasuke",
+				clan: "Sarutobi",
+				get fullTitle() {
+					return this.clan + " " + this.name;
+				},
+				set fullTitle(value) {
+					var segments = value.split(" ");
+					this.name = segments[1];
+					this.clan = segments[0];
+				}
+			
+			};
+			
+			assert(ninja.name === "Sasuke", "Our ninja Sasuke");
+			assert(ninja.clan === "Sarutobi", "Of clan Sarutobi");
+			assert(ninja.fullTitle === "Sarutobi Sasuke",
+					"The full name is now Sarutobi Sasuke");
+			
+			ninja.fullTitle = "Fuma Kotaro";
+			
+			assert(ninja.name === "Kotaro", "Our ninja Kotaro");
+			assert(ninja.clan === "Fuma", "Of clan Fuma");
+			assert(ninja.fullTitle === "Fuma Kotaro",
+					"The full name is now Fuma Kotaro");
+		</script>
+	</body>
+</html>
