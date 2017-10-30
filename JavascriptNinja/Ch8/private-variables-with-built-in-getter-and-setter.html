@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function Ninja() {
+			
+				var _skillLevel = 0;
+				
+				Object.defineProperty(this, "skillLevel", {
+				
+					get: () => {
+						report("Getting skillLevel");
+						return _skillLevel;
+					},
+					
+					set: value => {
+						
+						if (!Number.isInteger(value)) {
+						
+							throw new TypeError(
+									"Skill level should be a number");
+							
+						}
+						
+						report("Setting skillLevel");
+						_skillLevel = value;
+					}
+				
+				});
+			
+			}
+			
+			const ninja = new Ninja();
+			
+			assert(typeof ninja._skillLevel === "undefined",
+					"_skillLevel is not accessible directly");
+			assert(ninja.skillLevel === 0,
+					"skillLevel is 0");
+			
+			ninja.skillLevel = 10;
+			
+			assert(ninja.skillLevel === 10,
+					"now skillLevel is 10");
+			
+			try {
+				
+				ninja.skillLevel = "ten";
+				fail("Should not be here");
+				
+			} catch (e) {
+				pass("Setting a non-integer value throws an exception");
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			class NinjaCollection {
+			
+				constructor() {
+					this.ninjas = ["Yoshi", "Hattori", "Kuma"];
+				}
+				
+				get firstNinja() {
+					return this.ninjas[0];
+				}
+				
+				set firstNinja(value) {
+					this.ninjas[0] = value;
+				}
+			
+			}
+			
+			const ninjaCollection = new NinjaCollection();
+			
+			assert(ninjaCollection.firstNinja === "Yoshi",
+					"Yoshi is the fist ninja");
+			
+			ninjaCollection.firstNinja = "Kotaro";
+			
+			assert(ninjaCollection.firstNinja === "Kotaro" &&
+					ninjaCollection.ninjas[0] === "Kotaro",
+					"Now Kotaro is the first ninja");
+		</script>
+	</body>
+</html>
