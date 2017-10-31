@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function Folder() {
+			
+				return new Proxy({}, {
+				
+					get: (target, property) => {
+					
+						report("Reading " + property);
+						
+						if (!(property in target)) {
+							target[property] = new Folder();
+						}
+						
+						return target[property];
+					
+					}
+				
+				});
+			
+			}
+			
+			const rootFolder = new Folder();
+			
+			try {
+				rootFolder.ninjasDir.firstNinjaDir.ninjaFile = "kotaro.txt";
+				pass("An exception wasn't raised");
+			} catch(e) {
+				fail("An exception has occurred");
+			}
+		</script>
+	</body>
+</html>

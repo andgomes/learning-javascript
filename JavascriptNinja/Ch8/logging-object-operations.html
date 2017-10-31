@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function makeLoggable(target) {
+			
+				return new Proxy(target, {
+				
+					get: (target, property) => {
+						report("Reading " + property);
+						return target[property];
+					},
+					
+					set: (target, property, value) => {
+						report("Writing value " + value + " to " + property);
+						target[property] = value;
+					}
+				
+				});
+			
+			}
+			
+			var ninja = {name: "Kotaro"};
+			ninja = makeLoggable(ninja);
+			
+			assert(ninja.name === "Kotaro",
+					"Our ninja Kotaro");
+			
+			ninja.weapon = "Shuriken";
+		</script>
+	</body>
+</html>
