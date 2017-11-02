@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="reports"></ul>
+		<ul id="results"></ul>
+		<script>
+			function createNegativeArrayProxy(array) {
+			
+				if (!Array.isArray(array)) {
+					throw new TypeError("Expected an array");
+				}
+				
+				return new Proxy(array, {
+				
+					get: (target, index) => {
+						
+						index = +index;
+						return target[index < 0 ?
+								target.length + index : index];
+						
+					},
+					
+					set: (target, index, val) => {
+					
+						index = +index;
+						target[index < 0 ?
+								target.length + index : index] = val;
+					
+					}
+				
+				});
+			
+			}
+			
+			const ninjas = ["Yoshi", "Hattori", "Kuma"];
+			const proxiedNinjas = createNegativeArrayProxy(ninjas);
+			
+			assert(ninjas[0] === "Yoshi" &&
+					ninjas[1] === "Hattori" &&
+					ninjas[2] === "Kuma",
+					"Array items accessed through positive indexes");
+			
+			assert(proxiedNinjas[0] === "Yoshi" &&
+					proxiedNinjas[1] === "Hattori" &&
+					proxiedNinjas[2] === "Kuma",
+					"Array items accessed through positive indexes on a proxy");
+			
+			assert(ninjas[-1] === undefined &&
+					ninjas[-2] === undefined &&
+					ninjas[-3] === undefined,
+					"Items cannot be accessed through negative indexes " +
+					"on an array");
+			
+			assert(proxiedNinjas[-1] === "Kuma" &&
+					proxiedNinjas[-2] === "Hattori" &&
+					proxiedNinjas[-3] === "Yoshi",
+					"But they can be accessed through negative indexes " +
+					"on a proxy");
+			
+			proxiedNinjas[-1] = "Kotaro";
+			
+			assert(proxiedNinjas[-1] === "Kotaro" &&
+					ninjas[2] === "Kotaro",
+					"Items can be changed through negative indexes");
+		</script>
+	</body>
+</html>
