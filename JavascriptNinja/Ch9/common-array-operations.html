@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			var ninjas = ["Kotaro", "Hattori", "Yoshi"];
+			
+			ninjas.forEach(ninja => {
+				assert(ninja !== undefined, ninja);
+			});
+			
+			class Ninja {
+			
+				constructor(name, weapon) {
+					this.name = name;
+					this.weapon = weapon;
+				}
+			
+			}
+			
+			ninjas = [
+					new Ninja("Yagyu", "shuriken"),
+					new Ninja("Yoshi", "katana"),
+					new Ninja("Kuma", "wakizashi")];
+			
+			const weapons = ninjas.map(ninja => ninja.weapon);
+			
+			assert(weapons[0] === "shuriken" &&
+					weapons[1] === "katana" &&
+					weapons[2] === "wakizashi" &&
+					weapons.length === 3,
+					"The new array contains all weapons");
+			
+			ninjas = [
+					new Ninja("Yagyu", "shuriken"),
+					new Ninja("Yoshi"),
+					new Ninja("Kuma", "wakizashi")];
+			
+			const allNinjasAreNamed = ninjas.every(
+					ninja => ninja.name !== undefined);
+			const allNinjasAreArmed = ninjas.every(
+					ninja => ninja.weapon !== undefined);
+			
+			assert(allNinjasAreNamed, "Every ninja has a name");
+			assert(!allNinjasAreArmed, "But not every ninja is armed");
+			
+			const someNinjasAreArmed = ninjas.some(ninja =>
+					ninja.weapon !== undefined);
+			
+			assert(someNinjasAreArmed, "But some ninjas are armed");
+		</script>
+	</body>
+</html>
