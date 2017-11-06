@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			const directory = new Map();
+			
+			directory.set("Yoshi", "123");
+			directory.set("Kuma", "456");
+			directory.set("Hiro", "789");
+			
+			for (let item of directory) {
+			
+				assert(item[0] !== null, "Key: " + item[0]);
+				assert(item[1] !== null, "Value: " + item[1]);
+			
+			}
+			
+			for (let key of directory.keys()) {
+			
+				assert(key !== null, "Key: " + key);
+				assert(directory.get(key) !== null,
+						"Value: " + directory.get(key));
+			
+			}
+			
+			for (let value of directory.values()) {
+				assert(value !== null, "Value: " + value);
+			}
+		</script>
+	</body>
+</html>
