@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			const ninjas = ["Yoshi", "Hattori", "Kotaro"];
+			const samurai = ["Oda", "Tomoe", "Hattori"];
+			
+			const warriors = new Set([...ninjas, ...samurai]);
+			
+			assert(warriors.has("Yoshi"), "Yoshi is here");
+			assert(warriors.has("Oda"), "And Oda");
+			assert(warriors.has("Hattori"), "And Hattori");
+			assert(warriors.has("Tomoe"), "And Tomoe");
+			assert(warriors.has("Kotaro"), "Kotaro, last but not least");
+		</script>
+	</body>
+</html>

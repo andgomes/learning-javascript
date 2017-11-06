@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			const ninjas = new Set(["Kuma", "Hattori", "Yoshi", "Hattori"]);
+			
+			assert(ninjas.has("Hattori"), "Hattori is in our set");
+			assert(ninjas.size === 3,
+					"There are only three ninjas in our set!");
+			assert(!ninjas.has("Kotaro"), "Kotaro is not in, yet..");
+			
+			ninjas.add("Kotaro");
+			
+			assert(ninjas.has("Kotaro"), "Kotaro is added");
+			assert(ninjas.size === 4, "There are four ninjas in our set");
+			
+			assert(ninjas.has("Kuma"), "Kuma is already added");
+			
+			ninjas.add("Kuma");
+			
+			assert(ninjas.size === 4, "Adding Kuma again has no effect");
+			
+			for (let ninja of ninjas) {
+				assert(ninja !== undefined, ninja);
+			}
+		</script>
+	</body>
+</html>
