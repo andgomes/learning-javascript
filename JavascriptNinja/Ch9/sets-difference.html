@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			const ninjas = new Set(["Yoshi", "Hattori", "Kotaro"]);
+			const samurais = new Set(["Oda", "Tomoe", "Hattori"]);
+			
+			const pureNinjas = new Set([...ninjas].filter(
+					ninja => !samurais.has(ninja)));
+			
+			assert(pureNinjas.size === 2, "There's onlye one ninja samurai");
+			assert(pureNinjas.has("Yoshi"), "Yoshi is a true ninja");
+			assert(pureNinjas.has("Kotaro"), "Kotaro is a true ninja");
+		</script>
+	</body>
+</html>
