@@ -30,6 +30,23 @@
 			assert(typeof MouseCounterModule.numClicks === "undefined" &&
 					typeof MouseCounterModule.handleClick === "undefined",
 					"We cannot access internal module details");
+			
+			(function(module) {
+			
+				let numScrolls = 0;
+				
+				const handleScroll = function() {
+					alert(++numScrolls);
+				};
+				
+				module.countScrolls = () => {
+					document.addEventListener("wheel", handleScroll);
+				};
+				
+			})(MouseCounterModule);
+			
+			assert(typeof MouseCounterModule.countScrolls === "function",
+					"We can access augmented module functionality");
 		</script>
 	</body>
 </html>
