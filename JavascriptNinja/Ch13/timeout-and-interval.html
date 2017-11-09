@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="../test-and-report.js"></script>
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<ul id="results"></ul>
+		<ul id="reports"></ul>
+		<script>
+			function timeout() {	
+				pass("Timeout after 2 seconds");
+			}
+			
+			function interval() {
+				pass("Executed repeatedly after 2 seconds");
+			}
+			
+			setTimeout(timeout, 2000);
+			setInterval(interval, 2000);
+		</script>
+	</body>
+</html>
